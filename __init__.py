@@ -24,7 +24,7 @@ def resolve_ordinals(bv):
             for entry in binary.DIRECTORY_ENTRY_IMPORT:
                 for imp in entry.imports:
                     names[imp.address] = "{}!{}".format(entry.dll[:-4], imp.name)
-            for symbol in self.bv.get_symbols_of_type(SymbolType.ImportedFunctionSymbol) + self.bv.get_symbols_of_type(SymbolType.ImportAddressSymbol):
+            for symbol in self.bv.get_symbols_of_type(SymbolType.ImportAddressSymbol):
                 if "Ordinal_" in symbol.name and symbol.address in names:
                     bv.define_user_symbol(Symbol(symbol.type, symbol.address, names[symbol.address]))
 
