@@ -3,8 +3,10 @@ import pefile
 import tempfile
 
 from binaryninja import Symbol, SymbolType
-from binaryninja.log import log_info
 from binaryninja.plugin import BackgroundTaskThread, PluginCommand
+
+# TODO: If __name__ == Plugin name then do binaryninja stuff, else run standalone
+# (especially for cgen when we put it into this repo)
 
 def resolve_ordinals(bv):
     class Resolver(BackgroundTaskThread):
